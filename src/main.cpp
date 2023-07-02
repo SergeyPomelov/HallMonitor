@@ -23,9 +23,9 @@ void update()
   AHT10read();
   Serial.println(timeStr + String(" Temp ") + insideTemp +  " Hum " + insideHum);
   textToLcd(0U, timeStr + " " + String(insideTemp, 2) + "C " + String(insideHum, 2) + "%");
-  textToLcd(1U, str1);
-  textToLcd(2U, str2);
-  textToLcd(3U, str3);
+  textToLcd(1U, String(str1));
+  textToLcd(2U, String(str2));
+  textToLcd(3U, String(str3));
 }
 
 void initDevice(const String deviceName, const uint8_t displayLine, const boolean watchdogDisable, boolean (*init)())

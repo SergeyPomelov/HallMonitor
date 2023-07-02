@@ -9,7 +9,14 @@ ESP8266WebServer server(80);
 
 void updateMessages()
 {
-  String postBody = server.arg("plain");
+  const String authHeader = server.header("Authorization");
+  if (String(EXPECTED_AUTH_HEDER).equalsIgnoreCase(authHeader))
+  {
+    Serial.println("Auth failed");
+    return;
+  }
+
+  const String postBody = server.arg("plain");
   Serial.println(postBody);
   StaticJsonDocument<300> parsed; // Пул памяти
   // Десериализация документа JSON
@@ -23,9 +30,7 @@ void updateMessages()
   }
   else
   { // Вывести если ошибок нет
-
     Serial.println("There are no errors");
-    delay(5000);
   }
 
   str1 = (const char *) parsed["1"];

@@ -28,6 +28,7 @@ boolean ntpInit()
 
 String updateTime()
 {
+  ESP.wdtFeed();
   timeStr = getFormattedTime();
   return timeStr;
 }

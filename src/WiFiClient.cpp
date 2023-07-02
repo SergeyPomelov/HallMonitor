@@ -69,7 +69,7 @@ String getDevice(String id, boolean terminal)
     WiFiClient client;
     HTTPClient http;
     http.begin(client, url);
-    http.setTimeout(5000U);
+    http.setTimeout(2000U);
     Serial.printf("GET 2: %s\n", url.c_str());
 
     http.addHeader("Accept", "*/*");
@@ -130,7 +130,7 @@ int postDevice(const String id, const String value, const boolean terminal)
   WiFiClient client;
   HTTPClient http;
   http.begin(client, url);
-  http.setTimeout(5000U);
+  http.setTimeout(3000U);
 
   http.addHeader("Host", BACKEND_HOST);
   http.addHeader("Authorization", String("Bearer") + " " + SECURITY_TOKEN);
